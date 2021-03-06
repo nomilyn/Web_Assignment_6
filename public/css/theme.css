@@ -111,3 +111,7 @@ div.school {
     font-weight: bold;    
 }
 
+div.description {
+    color: darkgreen;
+    font-weight: bold;
+}

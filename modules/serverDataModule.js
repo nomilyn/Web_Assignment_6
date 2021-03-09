@@ -85,7 +85,6 @@ module.exports.getEmployeesByDepartment = function(department) {
         else {
             reject(`no results returned for this Department Number ${department}`);     
         }            
-        
     });
 } 
 
@@ -118,12 +117,7 @@ module.exports.addEmployee = function(employeeData) {
                     throw new Error("Manager does not exist");
                 }
             }
-            if(!employeeData.isManager) {
-                employeeData.isManager = false;
-            }
-            else {
-                employeeData.isManager = true;
-            }
+            employeeData.isManager = (employeeData.isManager) ? true : false;
             employeeData.department = parseInt(employeeData.department);
             let newEmployee = Object.assign({}, {
                 employeeNum: allData.employees.length + 1

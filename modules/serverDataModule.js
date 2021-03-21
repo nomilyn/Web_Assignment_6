@@ -150,11 +150,9 @@ module.exports.addEmployee = function(employeeData) {
     });
 }
 
-
 module.exports.updateEmployee = function(empData) {
     return new Promise((resolve, reject) => {
         let updateEmpData = allData.employees;
-        //let mgr = getEmployeesByNum(parseInt(empData.employeeManagerNum));
             for (let i = 0; i < updateEmpData.length; i++) {
                 if(updateEmpData[i].employeeNum == empData.employeeNum) {
                     updateEmpData[i].firstName = empData.firstName;

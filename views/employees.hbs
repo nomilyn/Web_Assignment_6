@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-12">
+        <br>
+        <h2>Employees</h2>
+        <hr /> 
+        <p>
+            <div class = "table-responsive">
+            <table class "table">
+                <tr>
+                    <th>Employee Num</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Manager ID</th>
+                    <th>Status</th>
+                    <th>Department</th>
+                    <th>Hired On</th>
+                </tr>
+                {{#each employees}}
+                    <tr>
+                        <td>{{employeeNum}}</td>
+                        <td><a href = "/employee/{{employeeNum}}"> {{firstName}} <br/> {{lastName}}</a></td>
+                        <td><a href ="mailto:{{email}}">{{email}}</a></td>
+                        <td>{{addressStreet}}<br/>{{addressCity}}<br/>{{addressState}}</td>
+                        <td>{{employeeManagerNum}}</td>
+                        <td>{{status}}</td>
+                        <td><a href = "/employees?department={{department}}">{{department}}</a></td>
+                        <td>{{hireDate}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+            </div>
+        </p>
+    </div>
+    <div class="col-md-12 text-center">
+        <strong>
+            {{#unless employeees}}
+                {{message}}
+            {{/unless}}
+        </strong>
+    </div>
+</div>
+
+

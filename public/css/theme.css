@@ -54,10 +54,10 @@ a.navbar-brand {
 }
 
   tr:nth-child(odd) {
-    background:lightgreen; 
+    background:lightyellow; 
   }
   tr:nth-child(even) {
-    background: yellowgreen; 
+    background:lightcyan; 
 }
 
 thead, tfoot {

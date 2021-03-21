@@ -91,19 +91,39 @@ module.exports.getEmployeesByDepartment = function(department) {
 module.exports.getEmployeesByNum = function(num) {
     return new Promise((resolve, reject) => {
         let found = false;
-        let arrByEmpNum = [];
+        let empByEmpNum;
         for(let i = 0; i < allData.employees.length; i++) {
             if(allData.employees[i].employeeNum == num) {
-                arrByEmpNum.push(allData.employees[i]);
+                empByEmpNum=allData.employees[i];
                 found = true;
                 break;
             }
         }
         if(found == true) {
-            resolve(arrByEmpNum);    
+            resolve(empByEmpNum);    
         }
         else {
             reject(`no results returned for this Employee Number ${num}`); 
+        }
+    });
+}
+
+module.exports.getDepartmentById = function(id) {
+    return new Promise((resolve, reject) => {
+        let found = false;
+        let DeptByDeptId;
+        for(let i = 0; i < allData.departments.length; i++) {
+            if(allData.departments[i].departmentId == id) {
+                DeptByDeptId = allData.departments[i];
+                found = true;
+                break;
+            }
+        }
+        if(found == true) {
+            resolve(DeptByDeptId);    
+        }
+        else {
+            reject('query returned 0 results'); 
         }
     });
 }
@@ -129,3 +149,30 @@ module.exports.addEmployee = function(employeeData) {
         }
     });
 }
+
+
+module.exports.updateEmployee = function(empData) {
+    return new Promise((resolve, reject) => {
+        let updateEmpData = allData.employees;
+        //let mgr = getEmployeesByNum(parseInt(empData.employeeManagerNum));
+            for (let i = 0; i < updateEmpData.length; i++) {
+                if(updateEmpData[i].employeeNum == empData.employeeNum) {
+                    updateEmpData[i].firstName = empData.firstName;
+                    updateEmpData[i].lastName = empData.lastName;
+                    updateEmpData[i].email = empData.email;
+                    updateEmpData[i].SSN = empData.SSN;
+                    updateEmpData[i].addressStreet = empData.addressStreet;
+                    updateEmpData[i].addressCity = empData.addressCity;
+                    updateEmpData[i].addressState = empData.addressState;
+                    updateEmpData[i].addressPostal = empData.addressPostal;
+                    updateEmpData[i].isManager = (empData.isManager) ? true : false;
+                    updateEmpData[i].employeeManagerNum = empData.employeeManagerNum;
+                    updateEmpData[i].status = empData.status;
+                    updateEmpData[i].department = empData.department;
+                    updateEmpData[i].hireDate = empData.hireDate;
+                }
+            }
+            resolve();
+    });
+}
+
